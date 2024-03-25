@@ -16,6 +16,7 @@ body {
   font-weight: 400;
   color: #444;
   background: #fff;
+  position: relative;
 }
 
 html,
