@@ -1,7 +1,6 @@
-/*https://loktar00@github.com/loktar00/JQuery-Snowfall*/ // document.write(`// <div style="z-index:999999;position: fixed;bottom: 0;width: 100%;font-size: 15px;padding: 10px 20px;background-color: #df4759;border-color: #df4759;color: #fff;">// 	<p class="text-center mb-0" style="color:#fff; margin:0;">// 		<strong>Thông báo!</strong> Chúng tôi tiếp tục đối mặt với sự cố dịch vụ lưu trữ hình ảnh. Biihappy đang mất niềm tin với nhà cung cấp dịch vụ hiện tại, nên chúng tôi sẽ chuyển đổi dữ liệu qua nhà cung cấp mới uy tín hơn. Cảm ơn bạn vì đã hiểu và chờ đợi chúng tôi!// 	</p>// </div>// `);Date.now ||
-  (Date.now = function () {
-    return new Date().getTime();
-  }),
+/*https://loktar00@github.com/loktar00/JQuery-Snowfall*/ // document.write(`// <div style="z-index:999999;position: fixed;bottom: 0;width: 100%;font-size: 15px;padding: 10px 20px;background-color: #df4759;border-color: #df4759;color: #fff;">// 	<p class="text-center mb-0" style="color:#fff; margin:0;">// 		<strong>Thông báo!</strong> Chúng tôi tiếp tục đối mặt với sự cố dịch vụ lưu trữ hình ảnh. Biihappy đang mất niềm tin với nhà cung cấp dịch vụ hiện tại, nên chúng tôi sẽ chuyển đổi dữ liệu qua nhà cung cấp mới uy tín hơn. Cảm ơn bạn vì đã hiểu và chờ đợi chúng tôi!// 	</p>// </div>// `);Date.now ||(Date.now = function () {
+  return new Date().getTime();
+}),
   (function () {
     "use strict";
     for (
