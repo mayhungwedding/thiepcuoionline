@@ -404,7 +404,7 @@
                 </div>
             </section>
 
-            <section id="the-gallery" class="gallery wide-gallery section-padding" style="background-image: url();background-position: center;background-repeat: no-repeat;background-size: cover;">
+            <section id="the-gallery" class="gallery wide-gallery section-padding" style="padding-bottom:50px;background-image: url(./may-hung-wedding_files/bg-4.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;">
                 <div class="container">
                     <div class="section-title wow fadeInDown" style="visibility: visible">
                         <h2>Album Hình Cưới</h2>
@@ -606,7 +606,7 @@
                 </div>
             </section>
 
-            <footer id="footer" class="footer-widgets" style="
+            <footer id="footer" class="footer-widgets" style="margin-top:0;
         background-image: url(./may-hung-wedding_files/bg-2.jpg);
         background-repeat: no-repeat;
         background-size: cover;
@@ -694,20 +694,6 @@
                 </ul>
             </div>
 
-            <script type="text/javascript">
-                const biicore = {
-                    template_id: "62ef3cfd4c248a18ec5a9b5a",
-                    templatePremium: "0" === "1",
-                    themeRoot: "https://mayhung.github.io/thiepcuoionline/templates/template18",
-                    webroot: "https://mayhung.github.io/thiepcuoionline",
-                    coreSite: "https://biihappy.com",
-                    webToken: "6601a3f93563a3cb47093558",
-                    isPremium: "" === "1",
-                    bgMusic: "https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3",
-                    alert: JSON.parse("[]"),
-                    effect: JSON.parse('{"type":"heart"}'),
-                };
-            </script>
             <script src="./may-hung-wedding_files/jquery-plugin-collection.js"></script>
             <script src="./may-hung-wedding_files/calendar.js"></script>
             <script src="./may-hung-wedding_files/script.js"></script>
@@ -1881,16 +1867,15 @@
                 audioPlayer.style.display = "none";
                 setTimeout(function() {
                     if (audioPlayer.canPlayType("audio/mpeg")) {
-                        audioPlayer.setAttribute("src", biicore.bgMusic);
+                        audioPlayer.setAttribute("src", 'https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3');
+                        audioPlayer.setAttribute("autoplay", "");
+                        audioPlayer.setAttribute("muted", "");
                         document.getElementsByClassName("bii-player")[0].style.display = "block";
                     }
                     audioPlayer.volume = 0.8;
-                    audioPlayer.setAttribute("controls", "controls");
-                    var button = document.querySelector(".bii-player");
-                    if (button) {
-                        button.click();
-                    }
+                    document.body.appendChild(audioPlayer);
                 }, 1000);
+
                 var myInterval = setInterval(function() {
                     if (document.querySelector(".bii-player")) {
                         setTimeout(function() {
