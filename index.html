@@ -1,8 +1,12 @@
 <html lang="en">
 
 <head>
+    <meta property="og:image" content="./may-hung-wedding_files/slide-1.jpg" />
+    <meta property="og:image:secure_url" content="./may-hung-wedding_files/slide-1.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="WIDTH" />
+    <meta property="og:image:height" content="HEIGHT" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Nguyễn Duy Hùng &amp; Bùi Thị Mây Wedding site!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1606,8 +1610,6 @@
             <script src="./may-hung-wedding_files/insertTextAtCursor.js"></script>
             <script type="module" src="./may-hung-wedding_files/init.js"></script>
 
-            <audio src="https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3" controls="controls" style="display: none"></audio>
-
             <img src="./may-hung-wedding_files/heart.png" class="snowfall-flakes" style="
         width: 27.69px;
         height: 27.69px;
@@ -1874,7 +1876,6 @@
         top: 1180px;
         left: 761.423px;
       " />
-            <audio src="https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3" controls="controls" style="display: none"></audio>
             <script>
                 var audioPlayer = document.createElement("AUDIO");
                 audioPlayer.style.display = "none";
@@ -1885,8 +1886,10 @@
                     }
                     audioPlayer.volume = 0.8;
                     audioPlayer.setAttribute("controls", "controls");
-                    audioPlayer.setAttribute("autoplay", "true");
-                    document.body.appendChild(audioPlayer);
+                    var button = document.querySelector(".bii-player");
+                    if (button) {
+                        button.click();
+                    }
                 }, 1000);
                 var myInterval = setInterval(function() {
                     if (document.querySelector(".bii-player")) {
