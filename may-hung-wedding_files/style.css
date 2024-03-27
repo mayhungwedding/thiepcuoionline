@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-@font-face {
+@import url("https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");@font-face {
   font-family: meriendaregular;
   src: url(../fonts/MeriendaRegular.eot);
   src: url(../fonts/MeriendaRegular.eot) format("embedded-opentype"),
@@ -6465,6 +6464,9 @@ textarea#content {
   border-style: solid;
   border-color: rgb(255 255 255) transparent transparent transparent;
 }
+.show-mobile {
+  display: none;
+}
 @media (max-width: 639px) {
   .home-3 #wd-banner {
     height: 80vw;
@@ -6480,5 +6482,8 @@ textarea#content {
   }
   div#clock .box:last-child {
     display: none !important;
+  }
+  .show-mobile {
+    display: block;
   }
 }
