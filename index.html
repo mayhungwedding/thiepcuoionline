@@ -1864,17 +1864,33 @@
       " />
             <script>
                 const biicore = {
-                    template_id: "62ef3cfd4c248a18ec5a9b5a",
                     templatePremium: "0" === "1",
                     themeRoot: "https://mayhung.github.io/thiepcuoionline/templates/template18",
                     webroot: "https://mayhung.github.io/thiepcuoionline",
-                    webToken: "6601a3f93563a3cb47093558",
-                    isPremium: "" === "1",
                     bgMusic: "https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3",
                     alert: JSON.parse("[]"),
                     effect: JSON.parse('{"type":"heart"}'),
                 };
 
+                var audioContext = new(window.AudioContext || window.webkitAudioContext)();
+
+                function playSound(url) {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', url, true);
+                    request.responseType = 'arraybuffer';
+
+                    request.onload = function() {
+                        audioContext.decodeAudioData(request.response, function(buffer) {
+                            var source = audioContext.createBufferSource();
+                            source.buffer = buffer;
+                            source.connect(audioContext.destination);
+                            source.start(0);
+                        });
+                    };
+
+                    request.send();
+                }
+                playSound('https://cdn.biihappy.com/ziiweb/wedding-musics/BeautifulInWhite-ShaneFilan-524801.mp3');
 
                 var audioPlayer = document.createElement("AUDIO");
                 audioPlayer.style.display = "none";
