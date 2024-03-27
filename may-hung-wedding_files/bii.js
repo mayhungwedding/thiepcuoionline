@@ -1,4 +1,5 @@
-Date.now ||  (Date.now = function () {
+Date.now ||
+  (Date.now = function () {
     return new Date().getTime();
   }),
   (function () {
@@ -320,17 +321,6 @@ if (biicore.bgMusic) {
     document.body.appendChild(audioPlayer);
     audioPlayer.play();
   }, 1000);
-  // var myInterval = setInterval(function(){
-  // 	if(document.querySelector(".bii-player")){
-  // 		setTimeout(function(){
-  // 			document.getElementsByClassName("bii-player")[0].classList.add("show-sec");
-  // 		},2000);
-  // 		setTimeout(function(){
-  // 			document.getElementsByClassName("bii-player")[0].classList.remove("show-sec");
-  // 		},7000);
-  // 		clearInterval(myInterval);
-  // 	}
-  // }, 200);
 
   function playPause() {
     document
