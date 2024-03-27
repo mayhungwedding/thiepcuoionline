@@ -1,6 +1,14 @@
-/*https://loktar00@github.com/loktar00/JQuery-Snowfall*/ // document.write(`// <div style="z-index:999999;position: fixed;bottom: 0;width: 100%;font-size: 15px;padding: 10px 20px;background-color: #df4759;border-color: #df4759;color: #fff;">// 	<p class="text-center mb-0" style="color:#fff; margin:0;">// 		<strong>Thông báo!</strong> Chúng tôi tiếp tục đối mặt với sự cố dịch vụ lưu trữ hình ảnh. Biihappy đang mất niềm tin với nhà cung cấp dịch vụ hiện tại, nên chúng tôi sẽ chuyển đổi dữ liệu qua nhà cung cấp mới uy tín hơn. Cảm ơn bạn vì đã hiểu và chờ đợi chúng tôi!// 	</p>// </div>// `);Date.now ||(Date.now = function () {
-  return new Date().getTime();
-}),
+/*https://loktar00@github.com/loktar00/JQuery-Snowfall*/ // document.write(`// <div style="z-index:999999;position: fixed;bottom: 0;width: 100%;font-size: 15px;padding: 10px 20px;background-color: #df4759;border-color: #df4759;color: #fff;">
+// 	<p class="text-center mb-0" style="color:#fff; margin:0;">
+// 		<strong>ThÃ´ng bÃ¡o!</strong> ChÃºng tÃ´i tiáº¿p tá»¥c Ä‘á»‘i máº·t vá»›i sá»± cá»‘ dá»‹ch vá»¥ lÆ°u trá»¯ hÃ¬nh áº£nh. Biihappy Ä‘ang máº¥t niá»m tin vá»›i nhÃ  cung cáº¥p dá»‹ch vá»¥ hiá»‡n táº¡i, nÃªn chÃºng tÃ´i sáº½ chuyá»ƒn Ä‘á»•i dá»¯ liá»‡u qua nhÃ  cung cáº¥p má»›i uy tÃ­n hÆ¡n. Cáº£m Æ¡n báº¡n vÃ¬ Ä‘Ã£ hiá»ƒu vÃ  chá» Ä‘á»£i chÃºng tÃ´i!
+// 	</p>
+// </div>
+// `);
+
+Date.now ||
+  (Date.now = function () {
+    return new Date().getTime();
+  }),
   (function () {
     "use strict";
     for (
@@ -179,7 +187,7 @@ var snowFall = (function () {
     },
   };
 })();
-var SNOW_Picture = biicore.webroot + "/common/imgs/heart.png";
+var SNOW_Picture = "assets/images/heart.png";
 var special_custom = ["646f6e3d778825e6f306667f", "64a04f6beb89a210fc07656a"];
 window.onload = (event) => {
   if (biicore.effect.type == "none") return false;
@@ -244,17 +252,9 @@ window.onload = (event) => {
   ) {
     setTimeout(() => {
       document.querySelector(".mouse-scroll-on-mobile").style.visibility =
-        "visible";
+        "hidden";
     }, 800);
   }
-
-  showContentWishSuggestions.forEach(function (content) {
-    content.addEventListener("click", function (event) {
-      event.preventDefault();
-      let text = this.textContent || this.innerText;
-      document.getElementById("content").value = text;
-    });
-  });
 };
 
 window.addEventListener("scroll", (event) => {
@@ -305,12 +305,55 @@ if (
         typeof biicore.alert.cancel_button_text != "undefined" &&
         biicore.alert.cancel_button_text != ""
           ? biicore.alert.cancel_button_text
-          : "Tắt thông báo",
+          : "Táº¯t thÃ´ng bÃ¡o",
     });
   }, biicore.alert.timeout);
 }
 
 if (biicore.bgMusic) {
+  var audioPlayer = document.createElement("AUDIO");
+  audioPlayer.style.display = "none";
+
+  setTimeout(function () {
+    if (audioPlayer.canPlayType("audio/mpeg")) {
+      audioPlayer.setAttribute("src", biicore.bgMusic);
+      document.getElementsByClassName("bii-player")[0].style.display = "block";
+    }
+    audioPlayer.volume = 0.3;
+    audioPlayer.autoplay = true;
+
+    audioPlayer.setAttribute("controls", "controls");
+    audioPlayer.setAttribute("loop", "");
+    audioPlayer.setAttribute("autoplay", "");
+    document.body.appendChild(audioPlayer);
+    audioPlayer.play();
+  }, 1000);
+  // var myInterval = setInterval(function(){
+  // 	if(document.querySelector(".bii-player")){
+  // 		setTimeout(function(){
+  // 			document.getElementsByClassName("bii-player")[0].classList.add("show-sec");
+  // 		},2000);
+  // 		setTimeout(function(){
+  // 			document.getElementsByClassName("bii-player")[0].classList.remove("show-sec");
+  // 		},7000);
+  // 		clearInterval(myInterval);
+  // 	}
+  // }, 200);
+
+  function playPause() {
+    document
+      .getElementsByClassName("bii-player")[0]
+      .classList.remove("show-sec");
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      document.getElementById("playerVolumeOff").style.display = "none";
+      document.getElementById("playerVolumeOn").style.display = "block";
+    } else {
+      audioPlayer.pause();
+      document.getElementById("playerVolumeOff").style.display = "block";
+      document.getElementById("playerVolumeOn").style.display = "none";
+    }
+  }
   document.write(`
 	<style type="text/css">
 	@-webkit-keyframes biilogo-pulse {
@@ -355,7 +398,7 @@ if (biicore.bgMusic) {
 	}
 	</style>
 	<div class="bii-player">
-		<div onclick="playPause();" class="bii-player-secondary"><div class="bii-player-secondary-content">Click vào đây nếu bạn muốn phát nhạc!</div></div>
+		<div onclick="playPause();" class="bii-player-secondary"><div class="bii-player-secondary-content"></div></div>
 		<div onclick="playPause();" class="playerIcon">
 			<span id="playerVolumeOff">
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" fill="#fff" class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
@@ -387,7 +430,7 @@ if (!biicore.isPremium && !biicore.templatePremium) {
   setTimeout(function () {
     document.getElementsByClassName("bii-logo")[0].classList.remove("show-sec");
   }, 28000);
-  var biiLogo = biicore.webroot + "/common/imgs/bii.png?v=20210131";
+  var biiLogo = biicore.webroot + "/common/imgs/bii.png";
   var currentYear = new Date().getFullYear();
   document.write(`
 	<style type="text/css">
@@ -439,11 +482,11 @@ if (!biicore.isPremium && !biicore.templatePremium) {
 	  .bii-footer .show-mobile{display: inline-block;}
 	}
 	</style>
-	<div class="bii-logo"><div class="bii-logo-secondary"><div class="bii-logo-secondary-content">Nền tảng tạo Website đám cưới miễn phí!</div></div><a href="${biicore.coreSite}/wedding" target="_blank"><img src="${biiLogo}" /></a></div>
+	<div class="bii-logo"><div class="bii-logo-secondary"><div class="bii-logo-secondary-content">Ná»n táº£ng táº¡o Website Ä‘Ã¡m cÆ°á»›i miá»…n phÃ­!</div></div><a href="${biicore.coreSite}/wedding" target="_blank"><img src="${biiLogo}" /></a></div>
 	<div class="bii-footer" style="z-index:9999;background-color: #000;border-top: 1px solid #df4759;color: #fff;text-align: center;letter-spacing: 1px;bottom: 0;width: 100%;font-size: 15px;">
 		<div class="container">
 			<a style="color: #fff;padding: 10px 0 13px;display: flex;align-items: center;justify-content: center;" href="https://biihappy.com/iwedding" target="_blank">
-				<span style="margin-right: 5px;"><img width="30" src="${biiLogo}" style="border: 1px solid #fff;border-radius: 50%;width:30px!important;margin-right:5px;" /> IWedding</span> | <span class="show-desktop" style="margin-left: 5px;">Nền tảng tạo website đám cưới miễn phí từ Biihappy</span><span class="show-mobile">Tạo website đám cưới miễn phí</span>
+				<span style="margin-right: 5px;"><img width="30" src="${biiLogo}" style="border: 1px solid #fff;border-radius: 50%;width:30px!important;margin-right:5px;" /> IWedding</span> | <span class="show-desktop" style="margin-left: 5px;">Ná»n táº£ng táº¡o website Ä‘Ã¡m cÆ°á»›i miá»…n phÃ­ tá»« Biihappy</span><span class="show-mobile">Táº¡o website Ä‘Ã¡m cÆ°á»›i miá»…n phÃ­</span>
 				<span style="line-height: 15px;vertical-align: middle;">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
 					  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
@@ -453,80 +496,4 @@ if (!biicore.isPremium && !biicore.templatePremium) {
 		</div>
 	</div>
 	`);
-}
-
-var showButtonWishSuggestions = document.querySelector(".show-autocomplete");
-var hideButtonWishSuggestions = document.querySelector(".hide-autocomplete");
-var showContentWishSuggestions = document.querySelectorAll(".showContent");
-
-var toggleDisplayWishesAutocomplete = function (check = false) {
-  let content = document.querySelector(".wishes-autocomplete-content");
-  let isShowing = showButtonWishSuggestions.style.display === "none";
-  if (check && !isShowing) {
-    return;
-  }
-  content.style.display = isShowing ? "none" : "";
-  showButtonWishSuggestions.style.display = isShowing ? "" : "none";
-  hideButtonWishSuggestions.style.display = isShowing ? "none" : "";
-};
-
-if (showButtonWishSuggestions && hideButtonWishSuggestions) {
-  showButtonWishSuggestions.addEventListener("click", function () {
-    toggleDisplayWishesAutocomplete(false);
-  });
-  hideButtonWishSuggestions.addEventListener("click", function () {
-    toggleDisplayWishesAutocomplete(false);
-  });
-  document.body.addEventListener("click", function (event) {
-    if (
-      event.target === document.body ||
-      (!showButtonWishSuggestions.contains(event.target) &&
-        !hideButtonWishSuggestions.contains(event.target) &&
-        !document
-          .getElementById("searchWishSuggestions")
-          .contains(event.target) &&
-        !Array.from(showContentWishSuggestions).some(function (element) {
-          return element.contains(event.target);
-        }))
-    ) {
-      toggleDisplayWishesAutocomplete(true);
-    }
-  });
-}
-
-function searchWishSuggestionsFunction() {
-  let input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("searchWishSuggestions");
-  filter = removeVietnameseTones(input.value.toUpperCase());
-  ul = document.getElementById("wishSuggestions");
-  li = ul.getElementsByTagName("li");
-
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (removeVietnameseTones(txtValue.toUpperCase()).indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-function removeVietnameseTones(str) {
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "A");
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "E");
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "I");
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "O");
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "U");
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "Y");
-  str = str.replace(/đ/g, "D");
-  str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
-  str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
-  str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
-  str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
-  str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
-  str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
-  str = str.replace(/Đ/g, "D");
-  str = str.replace(/[^a-zA-Z0-9 ]/g, "");
-  return str;
 }
