@@ -1,12 +1,4 @@
-/*https://loktar00@github.com/loktar00/JQuery-Snowfall*/ // document.write(`// <div style="z-index:999999;position: fixed;bottom: 0;width: 100%;font-size: 15px;padding: 10px 20px;background-color: #df4759;border-color: #df4759;color: #fff;">
-// 	<p class="text-center mb-0" style="color:#fff; margin:0;">
-// 		<strong>ThÃ´ng bÃ¡o!</strong> ChÃºng tÃ´i tiáº¿p tá»¥c Ä‘á»‘i máº·t vá»›i sá»± cá»‘ dá»‹ch vá»¥ lÆ°u trá»¯ hÃ¬nh áº£nh. Biihappy Ä‘ang máº¥t niá»m tin vá»›i nhÃ  cung cáº¥p dá»‹ch vá»¥ hiá»‡n táº¡i, nÃªn chÃºng tÃ´i sáº½ chuyá»ƒn Ä‘á»•i dá»¯ liá»‡u qua nhÃ  cung cáº¥p má»›i uy tÃ­n hÆ¡n. Cáº£m Æ¡n báº¡n vÃ¬ Ä‘Ã£ hiá»ƒu vÃ  chá» Ä‘á»£i chÃºng tÃ´i!
-// 	</p>
-// </div>
-// `);
-
-Date.now ||
-  (Date.now = function () {
+Date.now ||  (Date.now = function () {
     return new Date().getTime();
   }),
   (function () {
